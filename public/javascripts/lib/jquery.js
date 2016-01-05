@@ -9168,7 +9168,8 @@ jQuery.fn.andSelf = jQuery.fn.addBack;
 // https://github.com/jrburke/requirejs/wiki/Updating-existing-libraries#wiki-anon
 
 if ( typeof define === "function" && define.amd ) {
-	define( "jquery", [], function() {
+	// define( "jquery", [], function() {
+	define(function() {
 		return jQuery;
 	});
 }

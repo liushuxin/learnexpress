@@ -1,5 +1,4 @@
 
-#!/usr/bin/env node
 
 /**
  * Module dependencies.
@@ -27,6 +26,7 @@ var server = http.createServer(app);
  */
 
 server.listen(port);
+console.log("Server is onListening!");
 server.on('error', onError);
 server.on('listening', onListening);
 

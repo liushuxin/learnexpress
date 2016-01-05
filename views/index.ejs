@@ -2,12 +2,64 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
   </head>
   <body>
+  <div id="sd">
+       <a href="/myform">测试数据</a>
+  </div>
+
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <p>asadsda</p>
+    <!-- 引用reactive节点 -->
+    <div id="test-wrapper">
+    </div>
+    <!-- 模板 -->
+    {{#each list}}
+    <div>
+    <span> 姓名：{{name}}</span>
+    <span>年龄：{{age}}</span>
+       </div>
+    {{/each}}
+
+    <div id="simple">
+    </div>
+   <table id="table_id" class="display">
+            <thead>
+                <tr>
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                    <th>Column 3</th>
+                    <th>Column 4</th>
+                    <th>Column 5</th>
+                    <th>Column 6</th>
+                </tr>
+            </thead>
+            <tbody>
+          
+              
+            </tbody>
+        </table>
+<br>
+<br>
+<br>
+  <table id="table_id1" class="display">
+            <thead>
+               
+            </thead>
+            <tbody>
+          
+              
+            </tbody>
+        </table>
+    <script type ="text/javascript" id ='array_test'>
+    {{#each list:index}}
+    <div>{{this}}</div>
+    {{/each}}
+    </script>
   </body>
-/** vim: et:ts=4:sw=4:sts=4
-<script data-main="javascripts/page/ceshi" src="javascripts/lib/require.js"></script>
+<script src="/javascripts/lib/r.js" data-main="/javascripts/ceshi" ></script>
+
 </html>
