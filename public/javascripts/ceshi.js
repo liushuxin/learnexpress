@@ -147,20 +147,25 @@ require([
 ]
    $('#table_id').DataTable({
     data:data,
-    "aLengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
-     "sProcessing": "处理中...",
-  "sLengthMenu": "显示 _MENU_ 项结果",
-  "sZeroRecords": "没有匹配结果",
-  "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-  "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-  "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-  "sInfoPostFix": "",
-  "sSearch": "搜索:",
-  "oPaginate": {
-    "sFirst": "首页",
-    "sPrevious": "上页",
-    "sNext": "下页",
-    "sLast": "末页"
+    "aLengthMenu": [
+      [5, 10, 15, -1],
+      [5, 10, 15, "All"]
+    ],
+    "language": {
+      "sProcessing": "处理中...",
+      "sLengthMenu": "显示 _MENU_ 项结果",
+      "sZeroRecords": "没有匹配结果",
+      "info": "显示第  _PAGE_ 页 ,共 _PAGES_   页",
+      "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+      "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+      "sInfoPostFix": "",
+      "sSearch": "搜索:",
+      "oPaginate": {
+        "sFirst": "首页",
+        "sPrevious": "上页",
+        "sNext": "下页",
+        "sLast": "末页"
+      }
   }
    });
    var dataObj =[
@@ -169,10 +174,42 @@ require([
         "position":   "System Architect",
         "salary":     "$3,120",
         "start_date": "2011/04/25",
-        "office":     "Edinburgh",
+        "office":     "望京SOHO",
         "extn":       "5421"
+
     },
     {
+        "name":       "Garrett Winters",
+        "position":   "Director",
+        "salary":     "$5,300",
+        "start_date": "2011/07/25",
+        "office":     "Edinburgh",
+        "extn":       "8422"
+    },
+     {
+        "name":       "Garrett",
+        "position":   "Director",
+        "salary":     "$5,300",
+        "start_date": "2011/07/25",
+        "office":     "Edinburgh",
+        "extn":       "8422"
+    },
+     {
+        "name":       "lihua",
+        "position":   "Director",
+        "salary":     "$5,300",
+        "start_date": "2011/07/25",
+        "office":     "Edinburgh",
+        "extn":       "8422"
+    }, {
+        "name":       "Garrett Winters",
+        "position":   "Director",
+        "salary":     "$5,300",
+        "start_date": "2011/07/25",
+        "office":     "Edinburgh",
+        "extn":       "8422"
+    },
+     {
         "name":       "Garrett Winters",
         "position":   "Director",
         "salary":     "$5,300",
@@ -183,17 +220,18 @@ require([
 ]
       $('#table_id1').DataTable({
      data: dataObj,
-     "aLengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+     "aLengthMenu": [[5, 10, 15, -1], [5, 10, 15, "所有"]],
      columns: [
-        { data: 'name' },
-        { data: 'position' },
-        { data: 'salary' },
-        { data: 'office' }
+        { data: 'name',title:"姓名" },
+        { data: 'position' ,title:"位置" },
+        { data: 'salary' ,title:"薪酬" },
+        { data: 'office' ,title:"办公" }
     ],
-   "sProcessing": "处理中...",
+      "language": {
+            "sProcessing": "处理中...",
   "sLengthMenu": "显示 _MENU_ 项结果",
   "sZeroRecords": "没有匹配结果",
-  "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+  "info": "显示第  _PAGE_ 页 ,共 _PAGES_ 项",
   "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
   "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
   "sInfoPostFix": "",
@@ -203,9 +241,47 @@ require([
     "sPrevious": "上页",
     "sNext": "下页",
     "sLast": "末页"
-  }
+        }
+  
+  },
+   "columnDefs": [
+    {
+      // The `data` parameter refers to the data for the cell (defined by the
+      // `data` option, which defaults to the column being worked with, in
+      // this case `data: 0`.
+      "render": function(data, type, row) {
+        return '<a href="http://www.baidu.com">' + data + '  ' + row.name + '</a>';
+      },
+      "targets": 2
+    }, {
+      "visible": true,
+      "targets": [3]
+    }
+  ],
+  scrollY: '20vh',
+    scrollX: true,
+    scrollCollapse: true,
+    paging: true
    });
   setTimeout(function() {
     reactive1.set('list[0].name', 'lihua');
   },2000);
+
+  //lodash 测试
+  var users = [
+
+  { 'user': 'barney',  'age': 36 },
+  { 'user': 'fred',    'age': 40 },
+  { 'user': 'pebbles', 'age': 18 }
+];
+  var names =_.chain(users).map(function(user){
+    return user.user;
+  }).join(',').value();
+  console.log(names);
+
+  //将数据转化为对象
+  var objAge =_.chain(users).map(function(item){
+       return [item.user,item.age];
+  }).zipObject().value();
+  console.log(objAge);
 });
