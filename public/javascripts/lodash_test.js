@@ -112,7 +112,7 @@ $('#chart_line').highcharts({
             align: 'middle',
             verticalAlign: 'bottom',
             borderWidth:0,
-             x: 300, 
+            x: 300, 
             y: 20
         },
         series: [

@@ -217,7 +217,11 @@ require([
         "office":     "Edinburgh",
         "extn":       "8422"
     }
-]
+];
+
+
+
+  $('#table_show').DataTable();
       $('#table_id1').DataTable({
      data: dataObj,
      "aLengthMenu": [[5, 10, 15, -1], [5, 10, 15, "所有"]],
@@ -228,20 +232,20 @@ require([
         { data: 'office' ,title:"办公" }
     ],
       "language": {
-            "sProcessing": "处理中...",
-  "sLengthMenu": "显示 _MENU_ 项结果",
-  "sZeroRecords": "没有匹配结果",
-  "info": "显示第  _PAGE_ 页 ,共 _PAGES_ 项",
-  "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-  "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-  "sInfoPostFix": "",
-  "sSearch": "搜索:",
-  "oPaginate": {
-    "sFirst": "首页",
-    "sPrevious": "上页",
-    "sNext": "下页",
-    "sLast": "末页"
-        }
+        "sProcessing": "处理中...",
+        "sLengthMenu": "显示 _MENU_ 项结果",
+        "sZeroRecords": "没有匹配结果",
+        "info": "显示第  _PAGE_ 页 ,共 _PAGES_ 项",
+        "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索:",
+        "oPaginate": {
+          "sFirst": "首页",
+          "sPrevious": "上页",
+          "sNext": "下页",
+          "sLast": "末页"
+          }
   
   },
    "columnDefs": [
@@ -261,9 +265,10 @@ require([
   scrollY: '20vh',
     scrollX: true,
     scrollCollapse: true,
-    paging: true
+    paging: true,
+    "dom": '<"top"i>rt<"bottom"flp><"clear">'
    });
-  setTimeout(function() {
+  setTimeout(function(){
     reactive1.set('list[0].name', 'lihua');
   },2000);
 
