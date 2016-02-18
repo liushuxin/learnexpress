@@ -25,9 +25,9 @@ require([
   'lib/ractive',
   'lib/dataTables'
 ], function($, _, Ractive) {
-  var reactive1 = Ractive({
+  var reactive1 = new  Ractive({
     el: '#test-wrapper',
-    template: '#array_test',
+    template: '#array_test1',
     data: {
       list: [{
         name: 'foo',
@@ -38,7 +38,7 @@ require([
       }]
     }
   });
-  var reactive2 = Ractive({
+  var reactive2 =new  Ractive({
     el: '#simple',
     template: '#array_test',
     data: {

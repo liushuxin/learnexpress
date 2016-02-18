@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>node前后端分离测试</title>
+  <style>
+.chart_l{
+
+min-height:400px;
+min-width:600px;
+height:400px;
+width:400px;
+color:purple;
+}
+  </style>
+
+</head>
+
+<body>
+node js实现前后端分离
+<div id="div01"></div>
+
+<div id="chart_line" class="chart_l"></div>
+<div id="chart_bar"></div>
+<script>
+	
+	console.log('<%=title%>');
+</script>
+<%=title%>
+<div id="chart_bar"></div>
+<div id="str_data"></div>
+
+  <script type ="text/javascript" id ='array_test'>
+    {{#list:index}}
+      <div>{{this.XH}}</div>
+       <div>{{this.ZY}}</div>
+         <div>{{this.XXMC}}</div>
+      {{/each}}
+      </script>
+       <script type ="text/javascript" id ='str_ann'>
+  <div>{{list}}</div>
+      </script>
+
+</body>
+<script src="/javascripts/lib/r.js" data-main="/javascripts/page/callback_test.js" ></script>
+</html>
