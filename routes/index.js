@@ -9,7 +9,7 @@ router.get('/getBaseInfo', function(req, res, next) {
   res.render('test', { title: 'Express' });
 });
 router.get('/lodash/methods', function(req, res, next) {
-  res.render('lodash_test', { title: 'Express' });
+  res.render('lodash_method', { title: 'Express' });
 });
 
 module.exports = router;
