@@ -12,6 +12,7 @@
     "morgan": "~1.6.1",
     "node-form-validator": "^0.3.0",
     "serve-favicon": "~2.3.0",
-    "superagent": "~1.6.1"
+    "superagent": "~1.6.1",
+    "mongodb": ">= 0.9.9"
   }
 }
