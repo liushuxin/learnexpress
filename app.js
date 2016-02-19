@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var enrouten = require('express-enrouten');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -21,6 +22,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+/// dynamically include controllers
+app.use(enrouten({
+  directory: 'routes'
+}));
 app.use(express.static(path.join(__dirname, 'public')));//static 提供了静态文件支持
 
 app.use('/', routes);
