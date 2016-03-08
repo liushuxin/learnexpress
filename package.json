@@ -16,5 +16,12 @@
     "serve-favicon": "~2.3.0",
     "superagent": "~1.6.1",
     "x-root-path": "0.0.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.0.5",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0"
   }
 }
