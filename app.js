@@ -6,10 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var enrouten = require('express-enrouten');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var myform = require('./routes/myform');
-
 var app = express();
 
 // view engine setup
@@ -28,17 +24,21 @@ app.use(enrouten({
 }));
 app.use(express.static(path.join(__dirname, 'public')));//static 提供了静态文件支持
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/myform', myform);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
-
+app.use(function(req, res, next) {
+  var err = new Error('网页未找到');
+  err.status = 404;
+  res.type('html');
+  res.render('buildin/error', {
+    message: err.message,
+    error: {}
+  });
+});
 // error handlers
 
 // development error handler
