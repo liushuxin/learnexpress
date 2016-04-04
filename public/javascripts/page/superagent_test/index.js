@@ -24,15 +24,16 @@ require([
   'lib/jquery',
   'lib/lodash',
   'lib/ractive',
-  'lib/superagent'
+  'lib/superagent',
+  'lib/moment',
   //非导出模块。
-  'lib/dataTables'
-], function($, _, Ractive,request) {
-  request.get('/superagent_test/back',function(res){
+  'lib/dataTables',
+], function($, _, Ractive,request,moment) {
+  request.get('/superagent_test/back',function(req,res){
      if (res.ok) {
-       alert('yay got ' + JSON.stringify(res.body));
+       alert('yay got ' + JSON.stringify(res.text));
      } else {
        alert('Oh no! error ' + res.text);
      }
-  })
-}
+   })
+})

@@ -1,0 +1,45 @@
+<%var js = 'ractive_method/index'%>
+<%var css = 'ractive_method/index'%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ractive.js常用方法总结</title>
+    <% include ../layout/header.ejs %>
+</head>
+<body>
+<pre>
+  ractive 一个轻量级的MVVM框架。
+</pre>
+
+<div class="ract-main-wrapper">
+</div>
+<script type="javascript/template" id="main-template-01">
+  <div> {{name}}</div>
+  {{#if name === 'lili'}}
+    你好我是用户
+  {{else}}
+  你好我是管理员
+  {{/if}}
+
+  输入内容：<input type="text" placeholder="请输入内容" val="{{text}}"/>
+</script>
+<div class="main-drop-wrapper" id="asd"></div>
+<script type="javascript/template" id="dropdown-main-template">
+  <div class="dropdown" style="margin-left:200px;">
+  <a data-toggle="dropdown" href="#" >下拉菜单（Dropdown）触发器</a>
+  <div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+    <input placeholder="请输入查询字段" value="{{searchText}}" type="text">
+  <ul>
+    <li>{{list}}</li>
+  </ul>
+  </div>
+  
+</div>
+</script>
+<div>
+  
+</div>
+</body>
+   <% include ../layout/footer.ejs %>
+</html>

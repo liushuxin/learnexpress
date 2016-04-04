@@ -16,8 +16,120 @@ define([
   'lib/jquery',
   'lib/lodash',
   'lib/highcharts',
-  'lib/superagent'
-], function($, _,Ractive,request) {
+  'lib/superagent',
+  'lib/numeral'
+], function($, _,Ractive,request,numeral){
+  var Page = window.Page ={
+    run:function(){
+      var self = this;
+      self.initChart();
+    },
+    //初始化折线图
+    initChart:function(){
+      var self =this;
+      request
+        .get('/lodash/getChartData')
+        .query({name:'lihua'})
+        //.set('Accept', 'application/json')
+        .end(function(err,res){
+           console.log("HHHHHHHHHHHHHH");
+          console.log(res.body.data);
+          var list = res.body.data;
+
+              self.paintChart(list);
+        });
+    },
+    //绘制折线图
+    paintChart:function(list){
+      var thead = list.thead;
+      var tbody = list.tbody;
+      tbody = _.sortBy(tbody,'dt');
+      var categories = _.pluck(tbody,'dt');
+      categories = _.uniq(categories);
+      console.log(categories);
+      /**
+       * 趋势图y轴的数据。其基本数据格式为：
+       * series =[{
+       * name:'显示的折线名称'，
+       * data:[12,33,44,33,22,11,]//绘制折线的数据，通常和日期的个数一样。
+       * }]
+       * @type {[object]}
+       */
+      var  selectedIndex = 'ord_amt';
+      var series = _.groupBy(tbody,'first_tag_id_name');
+      var result =[];
+      console.log(series);
+      for(var key in series){
+        var ret = {};
+        ret.data =_.pluck(series[key],selectedIndex);
+        ret.name = key;
+        ret.tooltip = {
+          shared:false,
+                pointFormatter: function() {
+                  var point = this;
+                  console.log(point);
+                  return '<span style="color: ' + point.color + ';">\u25CF</span> ' +
+                  point.series.name + ': <b>' + numeral(this.y).format('0,00') + '</b><br/>';
+                }
+              };
+
+        ret.type = 'spline';
+        result.push(ret);
+      }
+      series = result;
+      //获得
+      var options = _.merge(_.cloneDeep(defaultChartOptions), {
+          title: {
+            text: "展示标题"
+          },
+          series: series,
+          xAxis: {
+            categories: categories
+          }
+        });
+
+        $('.chart-wrapper').highcharts(options);
+    }
+
+  };
+ var defaultChartOptions = {
+    credits: false,
+    title: {
+      text: null
+    },
+    xAxis: {
+      categories: []
+    },
+    yAxis: [
+      // 默认第一条轴
+      {
+        title: {
+          text: null
+        }
+      },
+
+      // 第二条轴百分比
+      {
+        opposite: true,
+        title: {
+          text: null
+        },
+        labels: {
+          formatter: function() {
+            return numeral(this.value).format('0.00%');
+          }
+        }
+      }
+    ],
+    tooltip: {
+      shared: true,//是否共享，共享后当鼠标滑到节点后。
+      //当为true时，则会将x轴上同一节点的数据，都显示在提示信息上。
+      //当为false时，则每个节点只显示自己节点的数据。
+      crosshairs: [true, true] //该属性当为true时，会有一条半透明的竖线轴，这个属性多于shared：true，一起使用。
+    }
+  };
+  //初始化工程。
+Page.run();
   var data1 = [{
     name: 'lihua',
     age: 23

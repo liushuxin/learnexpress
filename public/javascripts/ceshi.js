@@ -23,8 +23,11 @@ require([
   'lib/jquery',
   'lib/lodash',
   'lib/ractive',
+  'lib/moment-range',
+  'lib/moment',
   'lib/dataTables'
-], function($, _, Ractive) {
+  
+], function($, _, Ractive,moment) {
   var reactive1 = Ractive({
     el: '#test-wrapper',
     template: '#array_test',
