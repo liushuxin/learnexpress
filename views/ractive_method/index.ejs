@@ -93,6 +93,34 @@
   {{nonIsolatedSetting}}
 
 </script>
+<div class="output"></div>
+
+<script type="text/ractive" id="template1">
+<table class='superheroes'>
+  <tr>
+    <th>#</th>
+    <th class='sortable' on-tap='sort:name'>Superhero name</th>
+    <th class='sortable' on-tap='sort:realname'>Real name</th>
+    <th class='sortable' on-tap='sort:power'>Superpower</th>
+  </tr>
+
+  {{#each superheroes:num}}
+    <tr>
+      <td>{{num+1}}</td>
+      <td><a href='{{info}}'>{{name}}</a></td>
+      <td>{{realname}}</td>
+      <td>{{power}}</td>
+    </tr>
+  {{/each}}
+</table>
+<button class="btn btn-success" on-click="active">点击事件</button>
+</script>
+
+<div class="contentEle"></div>
+<script type="text/template" id="contentEle">
+{{}}:{{content}}
+{{{}}}:{{{content}}}
+</script>
 </body>
    <% include ../layout/footer.ejs %>
 </html>

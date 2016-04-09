@@ -24,6 +24,8 @@ define([
         var self = this;
         //新建一个简单的组件demo
         self.createCompoent();
+        self.initTable();
+        self.testContent();
       },
       createCompoent:function(){
         var Component = Ractive.extend({
@@ -46,6 +48,43 @@ define([
             nonIsolatedSetting: '这是一个扩展性很高的组件，你可以在任何地方使用它'
           },
           components: { Component: Component }
+        });
+      },
+      initTable:function(){
+        //数据
+        var xmen = [
+          { name: 'Nightcrawler', realname: 'Wagner, Kurt',     power: 'Teleportation',    info: 'http://www.superherodb.com/Nightcrawler/10-107/' },
+          { name: 'Cyclops',      realname: 'Summers, Scott',   power: 'Optic blast',      info: 'http://www.superherodb.com/Cyclops/10-50/' },
+          { name: 'Rogue',        realname: 'Marie, Anna',      power: 'Absorbing powers', info: 'http://www.superherodb.com/Rogue/10-831/' },
+          { name: 'Wolverine',    realname: 'Howlett, James',   power: 'Regeneration',     info: 'http://www.superherodb.com/Wolverine/10-161/' }
+        ];
+        var ractive = new Ractive({
+          el: '.output',
+          template: $('#template1').html(),
+          data: {
+            superheroes: xmen,
+            sort: function ( array, sortColumn ) {
+              // add sorting logic here
+              return array;
+            }
+          }
+        });
+
+        ractive.on( 'sort', function ( event, column ) {
+          alert( 'Sorting by ' + column );
+        });
+        ractive.on('active',function(){
+          alert('Activating!');
+        });
+       
+      },
+      testContent:function(){
+        var ractive = new Ractive({
+          el:'.contentEle',
+          template:$('#contentEle').html(),
+          data:{
+            content:'<p>你好，内容！</p>'
+          }
         });
       }
     }
