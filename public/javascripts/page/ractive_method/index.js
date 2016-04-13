@@ -26,6 +26,7 @@ define([
         self.createCompoent();
         self.initTable();
         self.testContent();
+        self.extendsRactive();
       },
       createCompoent:function(){
         var Component = Ractive.extend({
@@ -76,7 +77,6 @@ define([
         ractive.on('active',function(){
           alert('Activating!');
         });
-       
       },
       testContent:function(){
         var ractive = new Ractive({
@@ -86,6 +86,53 @@ define([
             content:'<p>你好，内容！</p>'
           }
         });
+      },
+      extendsRactive:function(){
+        var Slideshow = Ractive.extend({
+        template: $('#extends-ractive').html(),
+
+        // method for changing the currently displayed image
+        goto: function ( imageNum ) {
+          var images = this.get( 'images' );
+
+          // Make sure the image number is between 0...
+          while ( imageNum < 0 ) {
+            imageNum += images.length;
+          }
+
+          // ...and the maximum
+          imageNum %= images.length;
+
+          // Then, update the view
+          this.set({
+            image: images[ imageNum ],
+            current: imageNum
+          });
+        },
+
+        // initialisation code
+        oninit: function ( options ) {
+          this.on( 'goto', function ( event, index ) {
+            this.goto( index );
+          });
+
+          // start with the first image
+          this.goto( 0 );
+        }
+      });
+
+
+var slideshow = new Slideshow({
+  el: '.output2',
+  data: { images:[{
+      src: '/images/tou1.jpg',
+      caption: 'Trying to work out a problem after the 5th hour'
+    },{
+      src: '/images/tou2.jpg',
+      caption: '这是第二张漫画'
+    }]
+  }
+});
       }
     }
     //执行代码
@@ -94,11 +141,10 @@ define([
       var isOk = true;
       if(isOk){
         $('#myModal').modal('hide');
-         $('.alert-danger').html('')
+        $('.alert-danger').html('')
       }else{
         $('.alert-danger').html('输入不合法')
       }
-     
     })
    var ract1 = Ractive({
     el:'.ract-main-wrapper',

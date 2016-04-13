@@ -121,6 +121,22 @@
 {{}}:{{content}}
 {{{}}}:{{{content}}}
 </script>
+<script type="text/template" id="extends-ractive">
+<div class='slideshow'>
+  <div class='main'>
+    <a class='prev' on-click='goto:{{current-1}}'><span>&laquo;</span></a>
+    <div class='main-image'
+         style='background-image: url({{image.src}});'>
+    </div>
+    <a class='next' on-click='goto:{{current+1}}'><span>&raquo;</span></a>
+  </div>
+  <div class="clearfix"></div>
+    <div class='caption'>
+    <p>{{image.caption}}</p>
+  </div>
+</div>
+</script>
+<div class="output2"></div>
 </body>
    <% include ../layout/footer.ejs %>
 </html>

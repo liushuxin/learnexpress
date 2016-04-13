@@ -8,6 +8,7 @@
 var express = require('express');
 var fs = require('fs');
 var home = require('x-root-path');
+var moment =require('moment');
 var router = express.Router();
 module.exports = function(router){
   //渲染主页面
@@ -19,66 +20,85 @@ module.exports = function(router){
   router.get('/creat_file',function(req,res,next){
     var   fileName = req.query.filename;
 
-    console.log(fileName);
+    console.log('您要创建的文件名为：'+fileName);
     try{
       fs.mkdir(home+'/public/javascripts/'+fileName);
       fs.mkdir(home+'/routes/'+fileName);
       fs.mkdir(home+'/views/'+fileName);
       fs.mkdir(home+'/less/'+fileName);
+      console.log("==========================================");
+      console.log("文件夹创建成功！");
+      console.log("==========================================");
+      createPublicJavascriptFile(fileName);
      }catch(e){
       e.print();
      }
-   
-    fs.writeFile(home+'/public/javascripts/'+fileName+'/index.js', '我是通过写入的文件内容！',  function(err) {
-      if (err) {
-         return console.error(err);
-      }else{
-       console.log("数据写入成功！");
-       var isOk = true;
-      }
+      function createPublicJavascriptFile(fileName){
+        fs.readFile(home+'/public/file/jstpl.js', function (err, data) {
+            if (err) {
+               return console.error(err);
+            }
+            var temp =data.toString();
+            var arr =temp.split('@date:');
 
- /*  console.log("--------我是分割线-------------")
-   
-   console.log("读取写入的数据！");*/
-/*   fs.readFile('input.txt', function (err, data) {
-      if (err) {
-         return console.error(err);
+            var result =arr[0]+'@date:'+moment().format('YYYY-MM-DD')+arr[1];
+            fs.writeFile(home+'/public/javascripts/'+fileName+'/index.js',result,  function(err) {
+            if (err) {
+               return console.error(err);
+            }else{
+             console.log(home+'/public/javascripts/'+fileName+'/index.js 数据写入成功！');
+             createRouterFile(fileName);
+            }
+          });
+        });
       }
-      console.log("异步读取文件数据: " + data.toString());
-   });*/
-  });
-  fs.writeFile(home+'/routes/'+fileName+'/index.js', '我是通过写入的文件内容！',  function(err) {
-      if (err) {
-         return console.error(err);
-      }else{
-       console.log("数据写入成功！");
-       var isOk = true;
+      function createRouterFile(fileName){
+        fs.readFile(home+'/public/file/routertpl.js', function (err, data) {
+            if (err) {
+               return console.error(err);
+            }
+            fs.writeFile(home+'/routes/'+fileName+'/index.js',data.toString(),  function(err) {
+            if (err) {
+               return console.error(err);
+            }else{
+             console.log(home+'/routes/'+fileName+'/index.js 数据写入成功！');
+             createViewsFile(fileName);
+            }
+          });
+        });
       }
-  });
-  fs.writeFile(home+'/views/'+fileName+'/index.ejs', '我是通过写入的文件内容！',  function(err) {
-      if (err) {
-         return console.error(err);
-      }else{
-       console.log("数据写入成功！");
-       var isOk = true;
+      function createViewsFile(fileName){
+        fs.readFile(home+'/public/file/viewstpl.ejs', function (err, data) {
+            if (err) {
+               return console.error(err);
+            }
+            fs.writeFile(home+'/views/'+fileName+'/index.ejs',data.toString(),  function(err) {
+            if (err) {
+               return console.error(err);
+            }else{
+             console.log(home+'/views/'+fileName+'/index.ejs 数据写入成功！');
+             createLessFile(fileName);
+            }
+          });
+        });
       }
-  });
-fs.writeFile(home+'/public/javascripts/'+fileName+'/index.js', '我是通过写入的文件内容！',  function(err) {
-      if (err) {
-         return console.error(err);
-      }else{
-       console.log("数据写入成功！");
-       var isOk = true;
+      function createLessFile(fileName){
+        fs.readFile(home+'/public/file/lesstpl.less', function (err, data) {
+            if (err) {
+               return console.error(err);
+            }
+            fs.writeFile(home+'/less/'+fileName+'/index.less',data.toString(),  function(err) {
+            if (err) {
+               return console.error(err);
+            }else{
+             console.log(home+'/less/'+fileName+'/index.less 数据写入成功！');
+             console.log("==========================================");
+             console.log("文件创建成功！");
+             console.log("==========================================");
+             res.send(true);
+            }
+          });
+        });
       }
-  });
-fs.writeFile(home+'/less/'+fileName+'/index.less', '我是通过写入的文件内容！',  function(err) {
-      if (err) {
-         return console.error(err);
-      }else{
-       console.log("数据写入成功！");
-       var isOk = true;
-      }
-  });
 });
-  
 }
