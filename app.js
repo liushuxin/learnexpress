@@ -5,12 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var enrouten = require('express-enrouten');
+var cons = require('consolidate');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));//存放模板文件的路径。
+app.set('views', path.join(__dirname, 'templates'));//存放模板文件的路径。
 app.set('view engine', 'ejs');//视图模板引擎
+// Template Engine: nunjucks
+app.engine('nunjucks', cons.nunjucks);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -20,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 /// dynamically include controllers
 app.use(enrouten({
-  directory: 'routes'
+  directory: 'controller'
 }));
 app.use(express.static(path.join(__dirname, 'public')));//static 提供了静态文件支持
 

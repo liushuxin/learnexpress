@@ -22,10 +22,10 @@ module.exports = function(router){
 
     console.log('您要创建的文件名为：'+fileName);
     try{
-      fs.mkdir(home+'/public/javascripts/'+fileName);
-      fs.mkdir(home+'/routes/'+fileName);
-      fs.mkdir(home+'/views/'+fileName);
-      fs.mkdir(home+'/less/'+fileName);
+      fs.mkdir(home+'/public/javascripts/page/'+fileName);
+      fs.mkdir(home+'/controller/'+fileName);
+      fs.mkdir(home+'/templates/'+fileName);
+      fs.mkdir(home+'/less/page/'+fileName);
       console.log("==========================================");
       console.log("文件夹创建成功！");
       console.log("==========================================");
@@ -42,11 +42,11 @@ module.exports = function(router){
             var arr =temp.split('@date:');
 
             var result =arr[0]+'@date:'+moment().format('YYYY-MM-DD')+arr[1];
-            fs.writeFile(home+'/public/javascripts/'+fileName+'/index.js',result,  function(err) {
+            fs.writeFile(home+'/public/javascripts/page/'+fileName+'/index.js',result,  function(err) {
             if (err) {
                return console.error(err);
             }else{
-             console.log(home+'/public/javascripts/'+fileName+'/index.js 数据写入成功！');
+             console.log(home+'/public/javascripts/page/'+fileName+'/index.js 数据写入成功！');
              createRouterFile(fileName);
             }
           });
@@ -57,11 +57,11 @@ module.exports = function(router){
             if (err) {
                return console.error(err);
             }
-            fs.writeFile(home+'/routes/'+fileName+'/index.js',data.toString(),  function(err) {
+            fs.writeFile(home+'/controller/'+fileName+'/index.js',data.toString(),  function(err) {
             if (err) {
                return console.error(err);
             }else{
-             console.log(home+'/routes/'+fileName+'/index.js 数据写入成功！');
+             console.log(home+'/controller/'+fileName+'/index.js 数据写入成功！');
              createViewsFile(fileName);
             }
           });
@@ -72,11 +72,11 @@ module.exports = function(router){
             if (err) {
                return console.error(err);
             }
-            fs.writeFile(home+'/views/'+fileName+'/index.ejs',data.toString(),  function(err) {
+            fs.writeFile(home+'/templates/'+fileName+'/index.ejs',data.toString(),  function(err) {
             if (err) {
                return console.error(err);
             }else{
-             console.log(home+'/views/'+fileName+'/index.ejs 数据写入成功！');
+             console.log(home+'/templates/'+fileName+'/index.ejs 数据写入成功！');
              createLessFile(fileName);
             }
           });
@@ -87,11 +87,11 @@ module.exports = function(router){
             if (err) {
                return console.error(err);
             }
-            fs.writeFile(home+'/less/'+fileName+'/index.less',data.toString(),  function(err) {
+            fs.writeFile(home+'/less/page/'+fileName+'/index.less',data.toString(),  function(err) {
             if (err) {
                return console.error(err);
             }else{
-             console.log(home+'/less/'+fileName+'/index.less 数据写入成功！');
+             console.log(home+'/less/page/'+fileName+'/index.less 数据写入成功！');
              console.log("==========================================");
              console.log("文件创建成功！");
              console.log("==========================================");
