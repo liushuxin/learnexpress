@@ -57,7 +57,11 @@ module.exports = function(router){
             if (err) {
                return console.error(err);
             }
-            fs.writeFile(home+'/controller/'+fileName+'/index.js',data.toString(),  function(err) {
+            var temp =data.toString();
+            var arr =temp.split('filename');
+
+            var result =arr[0]+fileName+arr[1];
+            fs.writeFile(home+'/controller/'+fileName+'/index.js',result,  function(err) {
             if (err) {
                return console.error(err);
             }else{
@@ -72,7 +76,11 @@ module.exports = function(router){
             if (err) {
                return console.error(err);
             }
-            fs.writeFile(home+'/templates/'+fileName+'/index.ejs',data.toString(),  function(err) {
+            var temp =data.toString();
+            var arr =temp.split('filename');
+
+            var result =arr[0]+fileName+arr[1]+fileName+arr[2];
+            fs.writeFile(home+'/templates/'+fileName+'/index.ejs',result,  function(err) {
             if (err) {
                return console.error(err);
             }else{

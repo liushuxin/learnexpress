@@ -10,7 +10,7 @@ var router = express.Router();
 module.exports = function(router){
   //渲染主页面
   router.get('/',function(req,res,next){
-    res.render('filename/index.ejs');
+    res.render('btsp_layout_test/index.ejs');
   });
 
 };
