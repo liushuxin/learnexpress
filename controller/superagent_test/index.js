@@ -24,7 +24,7 @@ module.exports = function(router) {
           "category_name": "全部",
           "is_holiday": false,
           "festival_name": "",
-          "conv_of_push_order_user_to_uv_of_p_category": 0.3094,
+          "of_p_category": 0.3094,
           "dt": "20160308"
         },
         {
@@ -34,7 +34,7 @@ module.exports = function(router) {
           "category_name": "全部",
           "is_holiday": false,
           "festival_name": "",
-          "conv_of_push_order_user_to_uv_of_p_category": 0.3195,
+          "of_p_category": 0.3195,
           "dt": "20160311"
         },
         {
@@ -44,7 +44,7 @@ module.exports = function(router) {
           "category_name": "全部",
           "is_holiday": false,
           "festival_name": "",
-          "conv_of_push_order_user_to_uv_of_p_category": 0.3188,
+          "of_p_category": 0.3188,
           "dt": "20160312"
         },
         {
@@ -54,7 +54,7 @@ module.exports = function(router) {
           "category_name": "全部",
           "is_holiday": false,
           "festival_name": "",
-          "conv_of_push_order_user_to_uv_of_p_category": 0.3224,
+          "of_p_category": 0.3224,
           "dt": "20160313"
         },
         {
@@ -64,67 +64,67 @@ module.exports = function(router) {
           "category_name": "全部",
           "is_holiday": false,
           "festival_name": "",
-          "conv_of_push_order_user_to_uv_of_p_category": 0.3101,
+          "of_p_category": 0.3101,
           "dt": "20160314"
         },
         {
           "client_key": 10038,
           "client_name": "APP全部",
           "category_key": 10004,
-          "category_name": "送药上门",
+          "category_name": "送药",
           "is_holiday": false,
           "festival_name": "",
-          "conv_of_push_order_user_to_uv_of_p_category": 0.0382,
+          "of_p_category": 0.0382,
           "dt": "20160308"
         },
         {
           "client_key": 10038,
           "client_name": "APP全部",
           "category_key": 10004,
-          "category_name": "送药上门",
+          "category_name": "送药",
           "is_holiday": false,
           "festival_name": "",
-          "conv_of_push_order_user_to_uv_of_p_category": 0.0414,
+          "of_p_category": 0.0414,
           "dt": "20160309"
         },
         {
           "client_key": 10038,
           "client_name": "APP全部",
           "category_key": 10004,
-          "category_name": "送药上门",
+          "category_name": "送药",
           "is_holiday": false,
           "festival_name": "",
-          "conv_of_push_order_user_to_uv_of_p_category": 0.0434,
+          "of_p_category": 0.0434,
           "dt": "20160311"
         },
         {
           "client_key": 10038,
           "client_name": "APP全部",
           "category_key": 10004,
-          "category_name": "送药上门",
+          "category_name": "送药",
           "is_holiday": false,
           "festival_name": "",
-          "conv_of_push_order_user_to_uv_of_p_category": 0.0415,
+          "of_p_category": 0.0415,
           "dt": "20160312"
         },
         {
           "client_key": 10038,
           "client_name": "APP全部",
           "category_key": 10004,
-          "category_name": "送药上门",
+          "category_name": "送药",
           "is_holiday": false,
           "festival_name": "",
-          "conv_of_push_order_user_to_uv_of_p_category": 0.0407,
+          "of_p_category": 0.0407,
           "dt": "20160313"
         },
         {
           "client_key": 10038,
           "client_name": "APP全部",
           "category_key": 10004,
-          "category_name": "送药上门",
+          "category_name": "送药",
           "is_holiday": false,
           "festival_name": "",
-          "conv_of_push_order_user_to_uv_of_p_category": 0.0459,
+          "of_p_category": 0.0459,
           "dt": "20160314"
         }
       ];
@@ -145,13 +145,10 @@ module.exports = function(router) {
       //构造数据
       var temp = _.cloneDeep(fenzu[key][0]);
           temp.dt =item;
-          temp['conv_of_push_order_user_to_uv_of_p_category'] =0;
+          temp['of_p_category'] =0;
       fenzu[key].push(temp);
     });
-
-
   }
- 
      console.log(range1);
     res.send(range1);
   });

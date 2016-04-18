@@ -15,6 +15,6 @@ gulp.task('less',function(){
       .pipe(cssmin())
       .pipe(gulp.dest('public/stylesheets/'));
 });
-gulp.task('testWatch', function () {
-    gulp.watch('less/**/*.less', ['less']); //当所有less文件发生改变时，调用testLess任务
+gulp.task('less:watch', function () {
+    gulp.watch('less/**/*.less', ['less']); //当less中有文件发生改变时，调用less:watch
 });

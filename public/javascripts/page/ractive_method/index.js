@@ -137,6 +137,15 @@ var slideshow = new Slideshow({
     }
     //执行代码
     page.init();
+    //居中
+    $('#myModal')
+    .on('show.bs.modal', function(){
+          var $this = $(this);
+          var $modal_dialog = $this.find('.modal-dialog');
+          // 关键代码，如没将modal设置为 block，则$modala_dialog.height() 为零
+          $this.css('display', 'block');
+          $modal_dialog.css({'margin-top': Math.max(0, ($(window).height() - $modal_dialog.height()) / 2) });
+        });
     $(document).on('click','.modal-footer .btn-primary',function(){
       var isOk = true;
       if(isOk){
@@ -164,7 +173,7 @@ var slideshow = new Slideshow({
    });
    var i =0;
    ractive.observe('searchText',_.debounce(function(searchText){
-
+    
   var list = searchText +':'+(++i);
    ractive.set('list', list);
    },1000,{

@@ -36,7 +36,6 @@
     <li>{{list}}</li>
   </ul>
   </div>
-  
 </div>
 </script>
 通过 data 属性：在控制器元素（比如按钮或者链接）上设置属性 data-toggle="modal"，同时设置 data-target="#identifier" 或 href="#identifier" 来指定要切换的特定的模态框（带有 id="identifier"）。
@@ -52,36 +51,34 @@
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
    aria-labelledby="myModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <button type="button" class="close"
-               data-dismiss="modal" aria-hidden="true">
-                  &times;
-            </button>
-            <h4 class="modal-title" id="myModalLabel">
-                  请输入注册信息
-            </h4>
-         </div>
-         <div class="modal-body">
-            <label for="name">姓名：</label>
-            <input type="text" class="form-control"/>
-             <label for="name">姓名：</label>
-            <input type="text" class="form-control"/>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default"
-               data-dismiss="modal">关闭
-            </button>
-            <button type="button" class="btn btn-primary">
-               提交更改
-            </button>
-            <div class="pull-left alert-danger"></div>
-         </div>
-      </div><!-- /.modal-content -->
-</div><!-- /.modal -->
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close"
+        data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+          提示信息
+        </h4>
+      </div>
+      <div class="modal-body">
+        驳回该单元目标拆分数据后，<br/>
+        该单元及其所有下属单元当前的状态将变为“待拆分”。<br/>
+        继续请按“确认”，否则请按“取消”
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default"
+           data-dismiss="modal">取消
+        </button>
+        <button type="button" class="btn btn-primary">
+           确认
+        </button>
+        <div class="pull-left alert-danger"></div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
 </div>
-
 <script id="template" type="text/ractive">
   <div>
     <Component>

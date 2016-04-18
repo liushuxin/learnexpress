@@ -13,4 +13,4 @@ module.exports = function(router){
     res.render('filename/index.ejs');
   });
 
-}};
+};
