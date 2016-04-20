@@ -227,6 +227,7 @@ require([
   $('#table_show').DataTable();
       $('#table_id1').DataTable({
      data: dataObj,
+     "aoColumnDefs": [ { "bSortable": false, "aTargets": [0,1] }], 
      "aLengthMenu": [[5, 10, 15, -1], [5, 10, 15, "所有"]],
      columns: [
         { data: 'name',title:"姓名" },

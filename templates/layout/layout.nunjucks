@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>主题</title>
+  <title>{%block title%}{{site.title}}{%endblock%}</title>
 {%block header%}
 
 <link rel="stylesheet" href="/stylesheets/page/{{css}}.css">

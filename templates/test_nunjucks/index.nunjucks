@@ -1,15 +1,15 @@
 {% extends "templates/layout/layout.nunjucks" %}
 {% set js = 'test_nunjucks/index' %}
 {% set css = 'test_nunjucks/index' %}
-{%block header%}
-
-<link rel="stylesheet" href="/stylesheets/page/{{css}}.css">
-{%endblock%}
   {%block content %}
   {{super()}}
-<h2>nunjucks测试</h2>
-  {%endblock%}
-  {%block footer%}
+  <div class="container">
+  <h2>nunjucks测试</h2>
+    <div class="row highlight">
+      <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
+      <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+    </div>
+  </div>
 
-<script src="/javascripts/lib/r.js" data-main="/javascripts/page/{{ js }}" ></script>
-{%endblock%}
+  {%endblock%}
+

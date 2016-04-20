@@ -10,7 +10,11 @@ var router = express.Router();
 module.exports = function(router){
   //渲染主页面
   router.get('/',function(req,res,next){
-    res.render('test_nunjucks/index.nunjucks');
+    res.render('test_nunjucks/index.nunjucks',{
+      site:{
+        title:'nunjucks模板测试'
+      }
+    });
   });
 
 };
