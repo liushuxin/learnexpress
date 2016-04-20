@@ -6,8 +6,42 @@
   <meta charset="UTF-8">
   <title>主题</title>
     <% include ../layout/header.ejs %>
+    <style>
+  .bg-muted{
+    background: rgba(50,50,50,.1);;
+  }
+  .content{
+    width:300px;
+    height:200px;
+    background:white;
+  }
+   
+    </style>
 </head>
-<body>
+<body class="bg-muted">
+<div class="container">
+  <h2>CSS Grid 布局练习</h2>
+  <button class="btn btn-success">CSS Grid 布局的核心思想是将一个网页划分为列和行，
+  并可以基于不同大小，位置和图层的行和列来定位并调整我们创建块元素的大小</button>
+  <span class="span4">
+    span4
+  </span>
+  <div class="col-xs-6 col-md-4"> 
+  <div class="bg-white content" >
+    11111111
+  </div></div>
+  <div class="col-xs-6 col-md-4">
+  <div class="bg-white content" >
+    11111111
+  </div></div>
+  <div class="col-xs-6 col-md-4">
+  <div class="bg-white content" >
+    11111111
+  </div></div>
+ 
+    
+</div>
+
 
 </body>
    <% include ../layout/footer.ejs %>

@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>主题</title>
+{%block header%}
+
+<link rel="stylesheet" href="/stylesheets/page/{{css}}.css">
+{%endblock%}
+</head>
+<body>
+{%block content %}
+<h2>欢迎来到该系统</h2>
+{%endblock%}
+</body>
+{%block footer%}
+<script src="/javascripts/lib/r.js" data-main="/javascripts/page/{{ js }}" ></script>
+{%endblock%}
+</html>

@@ -1,0 +1,15 @@
+{% extends "templates/layout/layout.nunjucks" %}
+{% set js = 'test_nunjucks/index' %}
+{% set css = 'test_nunjucks/index' %}
+{%block header%}
+
+<link rel="stylesheet" href="/stylesheets/page/{{css}}.css">
+{%endblock%}
+  {%block content %}
+  {{super()}}
+<h2>nunjucks测试</h2>
+  {%endblock%}
+  {%block footer%}
+
+<script src="/javascripts/lib/r.js" data-main="/javascripts/page/{{ js }}" ></script>
+{%endblock%}

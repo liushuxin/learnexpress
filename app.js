@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var enrouten = require('express-enrouten');
+//适配多种模板
 var cons = require('consolidate');
 
 var app = express();

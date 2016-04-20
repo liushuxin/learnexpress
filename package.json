@@ -17,6 +17,7 @@
     "mongodb": ">= 0.9.9",
     "morgan": "~1.6.1",
     "node-form-validator": "^0.3.0",
+    "nunjucks": "^2.4.2",
     "serve-favicon": "~2.3.0",
     "superagent": "~1.6.1",
     "x-root-path": "0.0.2"
