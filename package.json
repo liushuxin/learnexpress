@@ -21,6 +21,7 @@
     "nunjucks": "^2.4.2",
     "serve-favicon": "~2.3.0",
     "superagent": "~1.6.1",
+    "text": "requirejs/text",
     "x-root-path": "0.0.2"
   },
   "devDependencies": {

@@ -18,5 +18,10 @@ module.exports = function(router){
 console.log("console.log:" +objString);
 debug("debug: %s",objString);
     res.render('ractive_method/index');
-  })
+  });
+  router.get('/test1',function(req,res,next){
+    res.render('ractive_method/event_test',{
+      title:'事件测试'
+    });
+  });
 }
