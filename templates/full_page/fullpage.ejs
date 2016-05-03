@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>fullpage</title>
+  <link rel="stylesheet" href="../../stylesheets/lib/jquery.fullPage.css">
+  <style>
+body{
+  color:white;
+}
+.slide{
+  background:blue;
+  text-align:center;
+  font-size:2em;
+
+}
+#fullpageMenu{
+position:fixed;
+top:0;
+right:800px;
+}
+
+  </style>
+
+</head>
+<body>
+<ul id="fullpageMenu">
+  <li data-menuanchor="page1" class="active"><a href="#page1">1 section</a></li>
+  <li data-menuanchor="page2"><a href="#page2">2 section</a></li>
+  <li data-menuanchor="page3"><a href="#page3">3 section</a></li>
+  <li data-menuanchor="page4"><a href="#page4">4 section</a></li>
+</ul>
+<div id="header">
+  Header
+</div>
+<div class="fullpage">
+  <div class="section">
+    <h1>第一页</h1>
+  </div>
+  <div class="section">
+    
+    <div class="slide">slide1</div>
+    <div class="slide">slide2</div>
+    <div class="slide">slide3</div>
+    <div class="slide">slide4</div>
+  </div>
+  <div class="section">
+    <h1>第三页</h1>
+  </div>
+  <div class="section">
+    <h1>第四页</h1>
+  </div>
+</div>
+</body>
+<script src="../../javascripts/lib/jquery.js" type="text/javascript"></script>
+<script src="../../javascripts/lib/jquery.fullPage.js" type="text/javascript"></script>
+<script>
+  $(function(){
+    $('.fullpage').fullpage({
+      sectionsColor:['green','orange','gray','pink'],
+      controlArrows:false,
+      //verticalCentered:false,
+     // resize:true,
+      scrollingSpeed:600,
+      anchors:['page1','page2','page3','page4'],
+      //easing:,
+      css3:true,
+     // loopTop:true,
+     // loopBottom:true,
+      loopHorizontal:true,
+      //autoScrolling:false,
+      //scrollBar:false,
+      paddingTop:'100px',
+      paddingBottom:'100px',
+      fixedElements:'#header',
+      keyboardScrolling:true,
+      touchSensitivity:5,
+      continuousVertical:true,
+      animationAnchor:true,
+      recordHistory:true,
+      menu:'#fullpageMenu'
+
+    });
+  })
+</script>
+</html>

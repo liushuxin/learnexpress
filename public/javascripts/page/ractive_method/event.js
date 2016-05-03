@@ -11,12 +11,15 @@ require.config({
     },
     'lib/bootstrap': {
       deps: ['lib/jquery']
+    },
+    'lib/jquery.form':{
+      deps: ['lib/jquery']
     }
   }
 });
 define([
   'lib/jquery','lib/lodash','lib/ractive','lib/superagent','lib/numeral',
-  'text!template/ractive/compoent.html','lib/bootstrap'],
+  'text!template/ractive/compoent.html','lib/bootstrap','lib/jquery.form'],
   function($, _,Ractive,request,numeral,textTpl){
     //$('.dropdown-toggle').dropdown()
     //设置添加事件：
@@ -25,6 +28,7 @@ define([
         var self = this;
         //新建一个简单的组件demo
         self.createCompoent();
+        self.formAjaxSubmit();
       },
       createCompoent:function(){
         var Component = Ractive.extend({
@@ -43,6 +47,25 @@ define([
         var co2 = new Ractive({
           
         })
+      },
+      formAjaxSubmit:function(){
+/*        $('#sub').click(function(){
+          console.log($('#formid').serialize());
+          $('#formid').ajaxForm({
+          url:'/ractive_method/test2',
+          data:$('#formid').serialize(),
+          type:'post',
+          mimeType:"multipart/form-data",
+          dataType:'json',
+          resetForm:true,
+          success:function(data){
+            console.log(data);
+          },
+          error:function(data){
+            alert(data.message);
+          }
+        });
+        });*/
       }
 
     }
