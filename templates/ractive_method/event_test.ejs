@@ -1,0 +1,29 @@
+<%var js = 'ractive_method/event.js'%>
+<%var css = 'ractive_method/index'%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/stylesheets/module/component.css">
+  <title>ractive.js常用方法总结</title>
+    <% include ../layout/header.ejs %>
+</head>
+<body>
+<pre>
+  ractive 一个轻量级的MVVM框架。
+  事件测试
+
+</pre>
+<form action="/ractive_method/test2" method="post" id="formid" enctype="multipart/form-data">
+ <label for="username">姓名：</label><input type="text" name="username" id="username">
+<label for="password">密码：</label><input type="password" name="password" id="password">
+<label for="filename"></label> <input type="file" width="300px" height="30px"name="fname" id="filename">
+<input type="submit" id="sub" value="提交">
+<input type="reset" value="重置">
+</form>
+
+<div class="com-test">
+</div>
+</body>
+   <% include ../layout/footer.ejs %>
+</html>

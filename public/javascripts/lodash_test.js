@@ -8,6 +8,9 @@ require.config({
   shim: {
       'lib/highcharts': {
       deps: ['lib/jquery']
+    },
+    'module/funnel': {
+      deps: ['lib/highcharts']
     }
   }
 });
@@ -15,8 +18,9 @@ require.config({
 define([
   'lib/jquery',
   'lib/lodash',
-  'lib/highcharts'
-], function($, _,Ractive) {
+  'lib/highcharts',
+  'module/funnel'
+], function($, _) {
 
 
 	//摘取相应列的数据
@@ -182,6 +186,39 @@ $('#chart_bar').highcharts({
         }, {
             name: 'London',
             data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }]
+    });
+$('#chart_pyramid').highcharts({
+        chart: {
+            type: 'pyramid',
+            marginRight: 100
+        },
+        title: {
+            text: 'Sales pyramid',
+            x: -50
+        },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b> ({point.y:,.0f})',
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                    softConnector: true
+                }
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        series: [{
+            name: 'Unique users',
+            data: [
+                ['Website visits',      15654],
+                ['Downloads',            4064],
+                ['Requested price list', 1987],
+                ['Invoice sent',          976],
+                ['Finalized',             846]
+            ]
         }]
     });
 });
