@@ -223,7 +223,7 @@ require([
 
 
   $('#table_show').DataTable();
-      $('#table_id1').DataTable({
+  $('#table_id1').DataTable({
      data: dataObj,
      "aoColumnDefs": [ { "bSortable": false, "aTargets": [0,1] }], 
      "aLengthMenu": [[5, 10, 15, -1], [5, 10, 15, "所有"]],
@@ -232,7 +232,7 @@ require([
         { data: 'position' ,title:"位置" },
         { data: 'salary' ,title:"薪酬" },
         { data: 'office' ,title:"办公" }
-    ],
+     ],
       "language": {
         "sProcessing": "处理中...",
         "sLengthMenu": "显示 _MENU_ 项结果",
@@ -248,28 +248,34 @@ require([
           "sNext": "下页",
           "sLast": "末页"
           }
-  
-  },
+     },
    "columnDefs": [
-    {
-      // The `data` parameter refers to the data for the cell (defined by the
-      // `data` option, which defaults to the column being worked with, in
-      // this case `data: 0`.
-      "render": function(data, type, row) {
-        return '<a href="http://www.baidu.com">' + data + '  ' + row.name + '</a>';
-      },
-      "targets": 2
-    }, {
-      "visible": true,
-      "targets": [3]
-    }
-  ],
-  scrollY: '20vh',
+      {
+        // The `data` parameter refers to the data for the cell (defined by the
+        // `data` option, which defaults to the column being worked with, in
+        // this case `data: 0`.
+        "render": function(data, type, row) {
+          return '<a href="http://www.baidu.com">' + data + '  ' + row.name + '</a>';
+        },
+        "targets": 2
+      }, {
+        "visible": true,
+        "targets": [3]
+      }
+    ],
+    scrollY: '20vh',
     scrollX: true,
     scrollCollapse: true,
     paging: true,
     "dom": '<"top"i>rt<"bottom"flp><"clear">'
    });
+
+   $('#table_id1').on( 'order.salary', function () {
+    // This will show: "Ordering on column 1 (asc)", for example
+      var order = table.order();
+      console.log("aaaaa")
+      $('#orderInfo').html( 'Ordering on column '+order[0][0]+' ('+order[0][1]+')' );
+    } );
   setTimeout(function(){
     reactive1.set('list[0].name', 'lihua');
   },2000);
