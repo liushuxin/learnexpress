@@ -25,19 +25,23 @@
     "nunjucks": "^2.4.2",
     "send": "^0.13.2",
     "serve-static": "^1.10.2",
-    "superagent": "^1.8.3",
+    "superagent": "~1.6.1",
     "request": "^2.72.0",
     "serve-favicon": "~2.3.0",
-    "superagent": "~1.6.1",
     "text": "requirejs/text",
     "x-root-path": "0.0.2"
   },
   "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-preset-es2015": "^6.9.0",
+    "browserify": "^13.0.1",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "gulp-less": "^3.0.5",
     "gulp-minify-css": "^1.2.4",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-webpack": "^1.5.0",
     "node-dev": "^3.1.0",
     "numeral": "^1.5.3"
   }
