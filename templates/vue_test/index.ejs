@@ -1,0 +1,32 @@
+<%var js = 'vue_test/index'%>
+<%var css = 'vue_test/index'%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>主题</title>
+    <% include ../layout/header.ejs %>
+</head>
+<body>
+<div id="app">
+  {{ name[0]}} :{{name[1]}}
+  {{ age[0]}} :{{age[1]}}
+  <input type="text" v-model="name[1]">
+</div>
+<div> 渲染列表：</div>
+<div id="d1">
+<ul>
+  <li v-for="item in items">
+    {{item}}
+  </li>
+</ul>
+</div>
+<div> 方法调用：</div>
+<div id="d2">
+  <span>{{text}}</span>
+  <button v-on:click="reverseText">文本倒置</button>
+</div>
+
+</body>
+   <% include ../layout/footer.ejs %>
+</html>

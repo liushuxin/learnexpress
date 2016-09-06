@@ -23,9 +23,10 @@ require([
   'lib/jquery',
   'lib/lodash',
   'lib/ractive',
+  'lib/vue',
   'lib/dataTables'
   
-], function($, _, Ractive) {
+], function($, _, Ractive,Vue) {
   var reactive1 = Ractive({
     el: '#test-wrapper',
     template: '#array_test',
@@ -46,7 +47,13 @@ require([
       list: [1, 2, 3]
     }
   });
-
+///vue test
+var vueTest =new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue.js!'
+    }
+})
  /* dataTable数据的渲染*/
  var data = [
     [
