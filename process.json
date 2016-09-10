@@ -1,18 +1,15 @@
 {
   "apps" : [{
-    "name"        : "worker",
+    "name"        : "leApp",
     "script"      : "./index.js",
     "watch"       : true,
     "env": {
       "NODE_ENV": "development",
     },
+    "out_file": "/opt/liushuxin/learnexpress_log/app1-out-log",
+    "err_file": "/opt/liushuxin/learnexpress_log/err1-out-log",
     "env_production" : {
        "NODE_ENV": "production"
     }
-  },{
-    "name"       : "api-app",
-    "script"     : "./index.js",
-    "instances"  : 4,
-    "exec_mode"  : "cluster"
   }]
 }
