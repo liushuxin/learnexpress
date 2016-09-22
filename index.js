@@ -48,6 +48,7 @@ function normalizePort(val) {
   if (port >= 0) {
     // port number
     return port;
+
   }
 
   return false;
@@ -56,7 +57,6 @@ function normalizePort(val) {
 /**
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;

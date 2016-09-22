@@ -23,6 +23,7 @@ define([
     run:function(){
       var self = this;
       self.initChart();
+      self.getTenDataImtate();
     },
     //初始化折线图
     initChart:function(){
@@ -89,6 +90,18 @@ define([
         });
 
         $('.chart-wrapper').highcharts(options);
+    },
+    /**
+     * 函数功能 [模拟get Internet data]
+     * @date   2016-09-15
+     * @author 刘述新
+     *  返回值 {[type]}
+     */
+    getTenDataImtate:function(){
+      var self = this;
+     
+
+
     }
 
   };
@@ -157,6 +170,6 @@ console.log(result1);
   var arr2 =[1,'cat','',false,'pig',33,44,NaN,undefined,null,0]
   var result2 =_.compact(arr2);
   console.log(result2);
-  var result3=_.concat()
+ 
 
 });

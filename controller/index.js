@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var request = require('superagent');
 
 module.exports = function(router) {
 /* GET home page. */
@@ -10,13 +11,20 @@ router.get('/getBaseInfo', function(req, res, next) {
   res.render('test', { title: 'Express' });
 });
 router.get('/lodash/methods', function(req, res, next) {
+     request
+        .get("http://www.imooc.com/course/AjaxCourseMembers")
+        .query({ids:9})
+        .set('Content-Type', 'application/json')
+        .end(function(err, res){
+          console.log(res.body);
+        });
   res.render('lodash_method', { title: 'Express' });
 });
 //获得折线图数据
 router.get('/lodash/getChartData', function(req, res, next) {
   var results = 
 
-{
+    {
   "data": {
     "thead": [
       "ord_amt_dayweek",

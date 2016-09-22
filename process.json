@@ -3,11 +3,14 @@
     "name"        : "leApp",
     "script"      : "./index.js",
     "watch"       : true,
+    "instances": 2,
+    "exec_mode": "cluster",
     "env": {
       "NODE_ENV": "development",
     },
-    "out_file": "/opt/liushuxin/learnexpress_log/app1-out-log",
-    "err_file": "/opt/liushuxin/learnexpress_log/err1-out-log",
+    "out_file": "/opt/liushuxin/learnexpress_log/app1-out.log",
+    "error_file": "/opt/liushuxin/learnexpress_log/app1-err.log",
+    "log_date_format" : "YYYY-MM-DD HH:mm",
     "env_production" : {
        "NODE_ENV": "production"
     }
