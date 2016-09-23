@@ -17,7 +17,7 @@ class Text extends Component{
   }
   render(){
     return (<div>
-      你好，React
+      你好，React1
     </div>)
 
   }

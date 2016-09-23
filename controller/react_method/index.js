@@ -19,8 +19,10 @@ var router = express.Router();
 module.exports = function(router){
   //渲染主页面
   router.get('/',function(req,res,next){
-     dd =JSON.parse("<a>hahah</a><a>hahah</a><a>hahah</a><a>hahah</a>");
-    res.render('react_method/index.ejs');
+    
+    res.render('react_method/index.ejs',{
+      title:'react测试'
+    });
   });
   router.get('/streamText',function(req,res,next){
     fs.createReadStream(bigFile).pipe(process.stdout);
