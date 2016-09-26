@@ -17,12 +17,17 @@ class Text extends Component{
   }
   render(){
     return (<div>
-      你好，React1
+      你好，React1,
+      属性扩展foo:{this.props.foo}
+      属性扩展bar:{this.props.bar}
     </div>)
 
   }
 }
+var props = {};
+props.foo = 'x';
+props.bar = 'y';
 ReactDOM.render(
-    <Text />,
+    <Text {...props} />,
     document.querySelectorAll('#test')[0]
 );

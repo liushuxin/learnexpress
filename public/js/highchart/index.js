@@ -103,7 +103,10 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        '你好，React1'
+	        '你好，React1, 属性扩展foo:',
+	        this.props.foo,
+	        '属性扩展bar:',
+	        this.props.bar
 	      );
 	    }
 	  }]);
@@ -111,7 +114,10 @@
 	  return Text;
 	}(_react.Component);
 	
-	_reactDom2.default.render(_react2.default.createElement(Text, null), document.querySelectorAll('#test')[0]);
+	var props = {};
+	props.foo = 'x';
+	props.bar = 'y';
+	_reactDom2.default.render(_react2.default.createElement(Text, props), document.querySelectorAll('#test')[0]);
 
 /***/ },
 /* 1 */
