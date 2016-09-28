@@ -18,9 +18,11 @@ require.config({
 define([
   'lib/jquery',
   'lib/lodash',
-  'lib/highcharts',
-  'module/funnel'
-], function($, _) {
+  'lib/numeral',
+   'module/funnel',
+  'lib/highcharts'
+ 
+], function($, _,numeral,fun,highcharts) {
 
 
 	//摘取相应列的数据
@@ -202,7 +204,6 @@ $('#chart_pyramid').highcharts({
                 dataLabels: {
                     enabled: true,
                     format: '<b>{point.name}</b> ({point.y:,.0f})',
-                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
                     softConnector: true
                 }
             }
@@ -221,4 +222,121 @@ $('#chart_pyramid').highcharts({
             ]
         }]
     });
+var page =window.page ={
+        backdata: {
+
+            "data": {
+                "dataList": [{
+                    "org_name": "外卖总部1",
+                  
+                    "txn_poi_num": "964956"
+                    
+                }, {
+                    "org_name": "外卖总部2",
+                    
+                    "txn_poi_num": "484886"
+                   
+                }, {
+                    "org_name": "外卖总部3",
+                    
+                    "txn_poi_num": "989660"
+                   
+                }, {
+                    "org_name": "外卖总部4",
+                    
+                    "txn_poi_num": "165282"
+                   
+                }, {
+                    "org_name": "外卖总部5",
+                   
+                    "txn_poi_num": "53916"
+                }]
+              
+            }
+        },
+        paintFunnel:function(){
+            var data =this.backdata;
+            var series = this.handleFunnelData(data);
+            var dataLength = series.length;
+            var dataList = series.data;
+            let seriesList = _.map(dataList,function(item,index,array){
+   
+                return {name:item[0],
+                        y:numeral(1),
+                        id:item[1]
+            };
+
+
+            });
+            
+            var chart = $('#funnelDom').highcharts({
+                chart: {
+                    type: 'funnel',
+                    marginRight: 100,
+                    marginBottom:50
+                },
+                title: {
+                    text: '访问分析概览',
+                    x: -50
+                },
+                plotOptions: {
+                    series: {
+                        neckWidth: '4%',
+                        neckHeight: '0%'
+                    },
+                    funnel:{
+                        dataLabels:{
+                            enabled:false
+                        },
+                        showInLegend:true,
+                        borderWidth:10
+
+                    }
+                },
+                 legend: {
+                    layout: 'horizontal',
+                    align: 'middle',
+                    verticalAlign: 'bottom',
+                  
+                    lineHeight:30,
+                    x: 0, 
+                    y: 0
+                },
+                credits: false,
+                exporting: false,
+                series: [{
+                    name: series.name,
+                    colors:series.colors,
+                    data:seriesList,
+                    tooltip:{
+                        pointFormatter:function(){
+                            console.log(this);
+                            return dataList[this.index][1].format('0,0');
+                        }
+                       
+                    }
+                   
+                }]
+            });
+        },
+        handleFunnelData:function(funnelData){
+             let self = this;
+    let dataList =[];
+    let showData =[];
+   
+      dataList = funnelData.data.dataList;
+      _.forEach(dataList,(item)=>{
+        showData.push([item.org_name,numeral(item.txn_poi_num)]);
+      });
+    let result ={
+      length:dataList.length,
+      name:'访问分析',
+      colors:['#FDA761','#28D1DA','#B5D4FD','#EE9C9F','#ACDFD0','#0f0','#EE9C9F','ACDFD0','#0f0'],
+       data: showData
+      
+    }
+    return result;
+        }
+}
+page.paintFunnel();
 });

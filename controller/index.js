@@ -20,6 +20,10 @@ router.get('/lodash/methods', function(req, res, next) {
         });
   res.render('lodash_method', { title: 'Express' });
 });
+router.get('/lodash/test', function(req, res, next) {
+    
+  res.render('test', { title: 'Express' });
+});
 //获得折线图数据
 router.get('/lodash/getChartData', function(req, res, next) {
   var results = 
