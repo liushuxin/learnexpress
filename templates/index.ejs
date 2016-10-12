@@ -9,32 +9,12 @@
 
   </head>
   <body>
-  <div id="sd">
-       <a href="/myform">测试数据</a>
-  </div>
-   <div id="sd">
-       <a href="/lodash/methods">lodash常用方法总结：</a>
-  </div>
-   <div id="sd">
-       <a href="/superagent_test">superagent常用方法总结：</a>
-  </div>
-  <div id="sd">
-       <a href="/file_test">文件测试：</a>
-  </div>
-  <div id="sd">
-       <a href="/ractive_method">ractive 常用方法测试</a>
-  </div>
+  <% for(var i=0;i<menuMsg.length;i++){%>
     <div id="sd">
-       <a href="/full_page">full page 测试</a>
-  </div>
-     <div id="sd">
-       <a href="/react_method">react 方法测试</a>
-  </div>
-   <div id="sd">
-       <a href="/lodash/test">highchart图相关</a>
-  </div>
-  
+       <a href='<%=menuMsg[i].url%>'><%=menuMsg[i].text%></a>
+    </div>
 
+    <%}%>
 
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>

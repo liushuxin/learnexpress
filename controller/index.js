@@ -1,11 +1,15 @@
 var express = require('express');
 var router = express.Router();
+var home = require('x-root-path');
 var request = require('superagent');
-
+var menuUrls = require(home+'/configs/entry_urls');
+console.log(menuUrls);
 module.exports = function(router) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', 
+    { title: 'Express',
+    menuMsg:menuUrls});
 });
 router.get('/getBaseInfo', function(req, res, next) {
   res.render('test', { title: 'Express' });
