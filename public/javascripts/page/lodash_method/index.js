@@ -17,11 +17,19 @@ define([
   'lib/lodash',
   'lib/highcharts',
   'lib/superagent',
-  'lib/numeral'
-], function($, _,Ractive,request,numeral){
+  'lib/numeral',
+  'lib/event'
+], function($, _,Ractive,request,numeral,EE){
   var Page = window.Page ={
     run:function(){
       var self = this;
+      var eventEmitter = new EE.EventEmitter();
+      eventEmitter.on('some_event', function() { 
+        alert('some_event 事件触发'); 
+      }); 
+      setTimeout(function() { 
+        eventEmitter.emit('some_event'); 
+      }, 1000); 
       self.initChart();
       self.getTenDataImtate();
     },

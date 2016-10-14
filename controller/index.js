@@ -3,7 +3,6 @@ var router = express.Router();
 var home = require('x-root-path');
 var request = require('superagent');
 var menuUrls = require(home+'/configs/entry_urls');
-console.log(menuUrls);
 module.exports = function(router) {
 /* GET home page. */
 router.get('/', function(req, res, next) {

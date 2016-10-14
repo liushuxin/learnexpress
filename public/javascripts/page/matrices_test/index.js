@@ -35,7 +35,7 @@ define([
                       {dt:"5",org:"大连5",a:15,b:25,c:35},
                   ];
                  var dm =math.matrix('dense');
-                 console.log(math.matrix);
+                 console.log(math.matrix.DenseMatrix);
                   var m = dm.fromJSON([ {dt:"1",org:"大连1",a:1,b:21,c:31},
                       {dt:"2",org:"大连2",a:12,b:22,c:32},
                       {dt:"3",org:"大连3",a:13,b:23,c:33},
