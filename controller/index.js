@@ -736,7 +736,7 @@ router.get('/lodash/getChartData', function(req, res, next) {
   },
   "auth": true
 };
-let fun =req.query.callback;
+var fun =req.query.callback;
   res.send(fun+'('+JSON.stringify(results)+')');
 });
 }

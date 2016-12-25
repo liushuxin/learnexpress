@@ -2,8 +2,10 @@
   "name": "learnexpress",
   "version": "0.0.0",
   "private": true,
-  "scripts": {},
+  "scripts": {
+  },
   "dependencies": {
+    "babel": "^6.5.2",
     "body-parser": "^1.15.0",
     "consolidate": "^0.14.0",
     "cookie-parser": "~1.3.5",
@@ -35,9 +37,12 @@
     "x-root-path": "0.0.2"
   },
   "devDependencies": {
+    "babel": "^6.5.2",
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-register": "^6.18.0",
     "browserify": "^13.0.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
