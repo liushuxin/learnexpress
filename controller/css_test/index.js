@@ -12,5 +12,9 @@ module.exports = function(router){
   router.get('/',function(req,res,next){
     res.render('css_test/index.ejs');
   });
+  router.get('/attribute/text',function(req,res,next){
+    res.render('css_test/text_attribute.ejs');
+  });
+ 
 
 };
